@@ -280,6 +280,6 @@ httr::content(APIoperations$get_if_then_string(text = examples_ifthen[1]))
 httr::content(APIoperations$get_cause_effect_string(text = examples_causeeffect[1]))
 
 #Extract arguments from vector of strings 
-sapply(examples_causeeffect, function(x){httr::content(APIoperations$get_if_then_string(text = x))})#multiple requests (examples_ifthen vector)
+sapply(examples_ifthen, function(x){httr::content(APIoperations$get_if_then_string(text = x))})#multiple requests (examples_ifthen vector)
 sapply(examples_causeeffect, function(x){httr::content(APIoperations$get_cause_effect_string(text = x))})#multiple requests (examples_causeeffect vector)
 ```
