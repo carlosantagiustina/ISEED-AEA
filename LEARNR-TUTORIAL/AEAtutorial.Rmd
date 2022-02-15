@@ -23,7 +23,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Outline
 
 
-
 This tutorial will help you set up your computer to use the API of ISEED's argument extractor and aggregator (ISEED-AEA). 
 The ISEED-AEA API, and its causal argument extraction methods, have been first presented and employed in the following (preprint) paper:
 
