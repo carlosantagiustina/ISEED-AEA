@@ -51,6 +51,8 @@ To exploit the asynchronous multisession functionality of plumber, which is nece
 ### Interactive tutorial with learnR
 
 start the interactive tutorial through RStudio by `Sourcing as local job` (command on top-right corner of RStudio scripting window) the R source file named: `RUN_TUTORIAL_port8989.R`
+Then visit the page of the interactive tutotial at the following address:[http://127.0.0.1:8989](http://127.0.0.1:8989)
+
 
 # Additional information
 
