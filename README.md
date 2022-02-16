@@ -2,7 +2,7 @@
 
 ## Summary
 
-This repository contains the API of the **ISEED-AEA**  (PLUMBER-API folder), related tutorials (LEARNR-TUTORIAL folder) and launcher files, which can serve as a testing prototype (pre-alpha version: 0.1). **ISEED-AEA** has been developed by Carlo R. M. A. Santagiustina and is mostly based on regular expression.
+This repository contains the API of the **ISEED-AEA**  (PLUMBER-API folder), related tutorials (LEARNR-TUTORIAL folder) and launcher files, which can serve as a testing prototype (pre-alpha version: 0.1). **ISEED-AEA** has been developed by Carlo R. M. A. Santagiustina and is mostly based on regular expressions (RegEx).
 The API is coded in R using the `plumber` library.
 
 This API, and its causal argument extraction methods, have been first presented and employed in the following (preprint) paper:
@@ -51,7 +51,7 @@ To exploit the asynchronous multisession functionality of plumber, which is nece
 ### Interactive tutorial with learnR
 
 start the interactive tutorial through RStudio by `Sourcing as local job` (command on top-right corner of RStudio scripting window) the R source file named: `RUN_TUTORIAL_port8989.R`
-Then visit the page of the interactive tutotial at the following address:[http://127.0.0.1:8989](http://127.0.0.1:8989)
+Then visit the page of the interactive tutorial at the following address:[http://127.0.0.1:8989](http://127.0.0.1:8989)
 
 
 # Additional information
