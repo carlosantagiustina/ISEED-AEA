@@ -34,7 +34,7 @@ ISEED website: https://iseedeurope.eu/
 
 ## Install Instructions 
 
-1) copy this folder in your local machine. If the `git` library is installed in your machine, you can use the following command:
+1) copy this folder in your local machine. If the `git` library is installed in your machine, you can use the following command: `git clone https://github.com/carlosantagiustina/ISEED-AEA`
 
 2)  install [R](https://cran.r-project.org/) (version 4.0.5 or later) and [RStudio](https://www.rstudio.com/products/rstudio/) (version 1.2 or later). 
 
