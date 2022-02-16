@@ -30,7 +30,7 @@ More endpoints and argument types will be made available in future versions of t
 
 This API was developed for the [ISEED](https://iseedeurope.eu/) project, which has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement No. 960366. This API and its contents reflect only the author’s views. The European Commission is not responsible for any use that may be made of the information it contains.
 
-ISEED website: 
+ISEED website: https://iseedeurope.eu/
 
 ## Install Instructions 
 
