@@ -4,10 +4,10 @@
 install_and_load <- function(pkg){
   new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
   if (length(new.pkg)) 
-    install.packages(new.pkg, dependencies = TRUE)
+    install.packages(new.pkg, dependencies = TRUE, repo="http://cran.r-project.org")
   sapply(pkg, require, character.only = TRUE)
 }
-packages <- c("plumber")
+packages <- c("plumber","quanteda")
 install_and_load (packages)
 
 AEA_API = plumber::plumb(dir = "./PLUMBER-API/")  # Where the file describing the API is located
