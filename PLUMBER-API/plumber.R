@@ -25,7 +25,7 @@ install_and_load <- function(pkg){
 }
 
 
-packages <- c("plumber","dplyr","promises")
+packages <- c("plumber","dplyr","promises","future")
 install_and_load (packages)
 future::plan("multisession")
 
