@@ -128,6 +128,14 @@ RegEx=function(x){
             ")(?![\\pL\\pM_-])",
             sep = ""),sep="|",collapse = "|"
    )
+}
+RegEx_comma=function(x){
+  paste(
+    paste("(?<=[\\pL\\pM_-])(",
+          x,
+          ")(?![\\pL\\pM_-])",
+          sep = ""),sep="|",collapse = "|"
+  )
 } 
 RegEx_not_by=function(x){
    paste(
@@ -146,6 +154,7 @@ RegEx_end=function(x){
             sep = ""),sep="|",collapse = "|"
    )
 } 
+
 RegEx_start=function(x){
    paste(
       paste("^(",
@@ -749,7 +758,7 @@ pattern_match_all=paste(creation_verbs_regex_match_all,destruction_verbs_regex_m
 #* @if-then relations extraction from single sentence
 #* Extracts if-then relations from a sentence using a set of regular expressions, no NLP tool is employed so the function is not aware of Part-Of-Speech or Dependency-Relations among words. This function was designed to be used with short texts from social media. The text string must be a single sentence and must have been already pre-processed to remove non latin-1 characters like emojis, as well as URLs. Remember to set the correct language parameter ("en" by default).
 #* @param text:str a character string containing a single sentence
-#* @param lang:str the language ISO 639-1 (2-character) code of the language to be used. Currently available languages: English="en", Italian="it",  French="fr", German="de"  and Spanish="es"  
+#* @param lang:str the language ISO 639-1 (2-character) code of the language to be used. Currently available languages: English="en", Italian="it", Polish="pl", French="fr", German="de"  and Spanish="es"  
 #*  @param ignore.case:bool  ignore case in RegEx
 #* @get /get_if_then_string
 #* @serializer unboxedJSON
@@ -761,37 +770,43 @@ if_then_extractor_sentence=function(text,
    promises::future_promise({
       
       
-   if(lang=="en"){
-      if_then_pattern="(?<=^if |[[:space:][:punct:]]if )\\K([[:word:][:space:]'-]){1,}\\K([,] ){0,}\\K(then )(?=([[:word:]]{1,}){1,})"
-      then_pattern=RegEx(c("if","then"))
-      If_=c("if","IF","If")
-      Then_=c("then","THEN","Then")
-   }
-   if(lang=="it"){
-      if_then_pattern="(?<=^se |[[:space:][:punct:]]se )\\K([\\pL\\pM[:space:]'-]){1,}\\K([,] ){0,}\\K(allora )(?=([\\pL\\pM]{1,}){1,})"
-      then_pattern=RegEx(c("se","allora"))
-      If_=c("se","SE","Se")
-      Then_=c("allora","ALLORA","Allora")
-   } 
-      if(lang=="fr"){
-         if_then_pattern="(?<=^si |[[:space:][:punct:]]si )\\K([\\pL\\pM[:space:]'-]){1,}\\K([,] ){0,}\\K(alors )(?=([\\pL\\pM]{1,}){1,})"
-         then_pattern=RegEx(c("si","alors"))
-         If_=c("si","SI","Si")
-         Then_=c("alors","ALLORS","Alors")
+      if(lang=="en"){
+         if_then_pattern="(?<=^if |[[:space:][:punct:]]if )\\K([[:word:][:space:]'-]){1,}\\K((then |[,] then |[,] ))(?=([[:word:]]{1,}){1,})"
+         then_pattern=paste0(RegEx(c("if","then")),"|",RegEx_comma(c("[,] then","[,]")))
+         If_=c("if","IF","If")
+         Then_=c("then","THEN","Then",",",", then",", THEN",", Then")
       }
+     if(lang=="it"){
+       if_then_pattern="(?<=^se |[[:space:][:punct:]]se )\\K([\\pL\\pM[:space:]'-]){1,}\\K((allora |[,] allora |[,] ))(?=([\\pL\\pM]{1,}){1,})"
+       then_pattern=paste0(RegEx(c("se","allora")),"|",RegEx_comma(c("[,] allora","[,]")))
+       If_=c("se","SE","Se")
+       Then_=c("allora","ALLORA","Allora",",",", allora",", ALLORA",", Allora")
+     } 
+     if(lang=="fr"){
+       if_then_pattern="(?<=^si |[[:space:][:punct:]]si )\\K([\\pL\\pM[:space:]'-]){1,}\\K((alors |[,] alors |[,] ))(?=([\\pL\\pM]{1,}){1,})"
+       then_pattern=paste0(RegEx(c("si","alors")),"|",RegEx_comma(c("[,] alors","[,]")))
+       If_=c("si","SI","Si")
+       Then_=c("alors","ALORS","Alors",",",", alors",", ALORS",", Alors")
+     }
       
       if(lang=="de"){
-         if_then_pattern="(?<=^wenn |[[:space:][:punct:]]wenn )\\K([\\pL\\pM[:space:]'-]){1,}\\K([,] ){0,}\\K(dann )(?=([\\pL\\pM]{1,}){1,})"
-         then_pattern=RegEx(c("wenn","dann"))
+         if_then_pattern="(?<=^wenn |[[:space:][:punct:]]wenn )\\K([\\pL\\pM[:space:]'-]){1,}\\K((dann |[,] dann |[,] ))(?=([\\pL\\pM]{1,}){1,})"
+         then_pattern=paste0(RegEx(c("wenn","dann")),"|",RegEx_comma(c("[,] dann","[,]")))
          If_=c("wenn","WENN","Wenn")
-         Then_=c("dann","DANN","Dann")
+         Then_=c("dann","DANN","Dann",",",", dann",", DANN",", Dann")
       }
       
       if(lang=="es"){
-         if_then_pattern="(?<=^si |[[:space:][:punct:]]si )\\K([[:word:][:space:]'-]){1,}\\K([,] ){0,}\\K(entonces )(?=([[:word:]]{1,}){1,})"
-         then_pattern=RegEx(c("si","entonces"))
+         if_then_pattern="(?<=^si |[[:space:][:punct:]]si )\\K([[:word:][:space:]'-]){1,}\\K((entonces |[,] entonces |[,] ))(?=([[:word:]]{1,}){1,})"
+         then_pattern=paste0(RegEx(c("si","entonces")),"|",RegEx_comma(c("[,] entonces","[,]")))
          If_=c("si","SI","Si")
-         Then_=c("entonces","ENTONCES","Entonces")
+         Then_=c("entonces","ENTONCES","Entonces",",",", entonces",", ENTONCES",", Entonces")
+      }
+      if(lang=="pl"){
+         if_then_pattern="(?<=^jeśli |jeżeli |jesli |jezeli |[[:space:][:punct:]]jeśli |[[:space:][:punct:]]jeżeli |[[:space:][:punct:]]jesli |[[:space:][:punct:]]jezeli )\\K([[:word:][:space:]'-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]){1,}\\K((to |wtedy |[,] to |[,] wtedy |[,] ))(?=([[:word:]zżźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,}){1,})"
+         then_pattern=paste0(RegEx(c("jeśli","jeżeli","wtedy","to")),"|",RegEx_comma(c("[,] wtedy","[,] to","[,]")))
+         If_=c("jeśli","jeżeli","jesli","jezeli","JEŚLI","JEŻELI","JESLI","JEZELI","Jeśli","Jeżeli","Jesli","Jezeli")
+         Then_=c("wtedy","to",",","WTEDY","TO","Wtedy","To",", wtedy",", to",", WTEDY",", TO",", Wtedy",", To")
       }
       
    x=list(text)
@@ -811,7 +826,7 @@ if_then_extractor_sentence=function(text,
                perl = perl,
                ignore.case = ignore.case)) {
          positions[[i]] = gregexpr(
-            pattern = then_pattern,
+            pattern = paste(then_pattern),
             x[[i]],
             perl = perl,
             ignore.case = ignore.case
