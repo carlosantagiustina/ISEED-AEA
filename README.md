@@ -2,7 +2,7 @@
 
 ## Summary
 
-This repository contains the API of the **ISEED-AEA**  (PLUMBER-API folder), related tutorials (LEARNR-TUTORIAL folder) and launcher files, which can serve as a testing prototype (pre-alpha version: 0.1). **ISEED-AEA** has been developed by Carlo R. M. A. Santagiustina and is mostly based on regular expressions (RegEx).
+This repository contains the API of the **ISEED-AEA**  (PLUMBER-API folder), related tutorials (LEARNR-TUTORIAL folder) and launcher files, which can serve as a testing prototype (alpha version: 0.2). **ISEED-AEA** has been developed by Carlo R. M. A. Santagiustina and is mostly based on regular expressions (RegEx).
 The API is coded in R using the `plumber` library.
 
 This API, and its causal argument extraction methods, have been first presented and employed in the following (preprint) paper:
