@@ -8,11 +8,11 @@
 #
 #AUTHOR: Carlo R. M.A. Santagiustina
 #MAIL: carlo.santagiustina@unive.it
-#API VERISON: 0.1
+#API VERISON: 0.2
 #PROJECT: ISEED-AEA
 #* @apiTitle  ISEED Argument Extractor & Aggregator
 #* @apiContact carlo.santagiustina@unive.it
-#* @apiVersion 0.1
+#* @apiVersion 0.2
 #* @apiDescription This is a OpenAPI for the [ISEED project](https://iseedeurope.eu/). It can be used to test the functions developed for ISEED's argument extractor and aggregator (ISEED-AEA). Implemented functionalities include the extractions of cause-effect and if-then relations from strings of text.
 #####################################
 #### INSTALL AND LOAD LIBRARIES #####
