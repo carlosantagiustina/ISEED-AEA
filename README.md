@@ -7,7 +7,7 @@ The API is coded in R using the `plumber` library.
 
 This API, and its causal argument extraction methods, have been first presented and employed in the following (preprint) paper:
 
-- Santagiustina, C. & Warglien, M. (2021). The unfolding structure of arguments in online debates: The case of a no-deal brexit. arXiv preprint [arXiv:2103.16387](https://arxiv.org/pdf/2103.16387.pdf).
+- Santagiustina CRMA, Warglien M (2022) The architecture of partisan debates: The online controversy on the no-deal Brexit. PLoS ONE 17(6): e0270236. [https://doi.org/10.1371/journal.pone.0270236](https://doi.org/10.1371/journal.pone.0270236).
 
 Please cite this paper to refer to the digital methods contained in the API.
 
